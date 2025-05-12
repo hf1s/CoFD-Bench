@@ -69,12 +69,3 @@ plot.plot_sucos_group_PLIF(
     plif_csv='plifs_recovery_df.csv',
     output_dir='./SuCOS_pocket_qcov'
 )
-```
-
-## Main Modules
-
-- **plot.py**: Core module containing all analysis and visualization functions
-- **PLIF_analysis/**: Auxiliary files for PLIF-related analysis
-- **AF3_warhead_analysis/**: Analysis results of AF3 model on different warhead types
-- **SuCOS_pocket_qcov/**: SuCOS pocket coverage analysis results
-- **rmsd_statistics/**: RMSD statistical analysis results 
