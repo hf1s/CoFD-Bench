@@ -1,0 +1,15 @@
+name: CoFD-Bench
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - pandas
+  - numpy
+  - matplotlib
+  - seaborn
+  - scipy
+  - pip
+  - pip:
+      # 如果有额外的 pip 包需求可以在这里添加
+      # - your-pip-package
