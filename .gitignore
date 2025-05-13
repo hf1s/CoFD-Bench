@@ -6,3 +6,5 @@
 *.edf
 *.tar.gz
 *.cif
+.gitignore
+test.ipynb
