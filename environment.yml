@@ -11,5 +11,3 @@ dependencies:
   - scipy
   - pip
   - pip:
-      # 如果有额外的 pip 包需求可以在这里添加
-      # - your-pip-package
