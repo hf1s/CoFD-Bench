@@ -8,19 +8,30 @@ CoFD-Bench is a benchmark platform for evaluating covalent docking methods, cont
 
 ## Data Description
 
-- `pdb_benchmark.csv`: Contains SuCOS-related data
-- `pdb_benchmark_RMSD.csv`: Contains RMSD data
+- `pdb_benchmark.csv`: Contains SuCOS-related data and distance information
+- `pdb_benchmark_RMSD.csv`: Contains RMSD data for various docking methods
 - `plifs_recovery_df.csv`: Contains PLIF (Protein-Ligand Interaction Fingerprints) recovery rate data
 
 ## Analysis Features
 
 This project implements various analysis and visualization functions:
 
-- **RMSD Statistical Analysis**: Use the `analyze_rmsd_statistics()` function to generate boxplots for different docking methods
-- **PLIF Recovery Analysis**: Use the `plot_combined_plif_analysis()` function to evaluate protein-ligand interaction fingerprint recovery rates
-- **SuCOS Group Analysis**: Use the `plot_sucos_group_PLIF()` function to compare docking results based on SuCOS_pocket_qcov grouping
-- **Success Rate Analysis**: Use the `plot_SuCOS_pocket_all()` function to analyze success rates of different methods at different SuCOS values
-- **AF3 Warhead Type Analysis**: Use `analyze_af3_success_rate()` and `plot_af3_warhead_pie()` functions to analyze AlphaFold3 performance on different warhead types
+- **`analyze_rmsd_statistics()`**: Comprehensive RMSD analysis with boxplots for different docking methods
+- **`analyze_rmsd_statistics_()`**: Simplified version of RMSD analysis for basic comparisons
+- **`plot_combined_af3_analysis()`**: Integrates three AF3 analysis plots into one large figure
+- **`plot_SuCOS_pocket_all()`**: Multi-method success rate analysis in 2x2 grid layout
+- **`plot_combined_plif_analysis()`**: Combined bar and violin plots for PLIF recovery
+- **`plot_sucos_group_PLIF()`**: Grouped stacked bar plots comparing docking outcomes by SuCOS groups
+
+## Supported Docking Methods
+
+The analysis framework supports multiple docking methods including:
+- **AF3 (AlphaFold3)**: Both covalent and non-covalent versions
+- **Chai-1**: Standard and MSA-enhanced versions
+- **Boltz-1x**: Boltzmann-enhanced sampling
+- **CovDock-AF3**: Covalent docking with AF3
+- **AutoDock-GPU-AF3**: GPU-accelerated docking with AF3
+- **GNINA-AF3**: GNINA-based docking with AF3
 
 ## Example Jupyter Notebooks
 
@@ -56,16 +67,21 @@ jupyter notebook RMSD_plot.ipynb
 ```python
 import plot
 
-# RMSD analysis
+# Basic RMSD analysis
 plot.analyze_rmsd_statistics(
-    csv_file='pdb_benchmark_RMSD.csv', 
-    output_dir='./rmsd_statistics'
+    csv_file='pdb_benchmark_RMSD.csv',
+    output_dir='./results'
 )
 
-# SuCOS and PLIF analysis
-plot.plot_sucos_group_PLIF(
-    rmsd_csv='pdb_benchmark_RMSD.csv',
-    sucos_csv='pdb_benchmark.csv',
-    plif_csv='plifs_recovery_df.csv',
-    output_dir='./SuCOS_pocket_qcov'
+# Combined AF3 analysis
+plot.plot_combined_af3_analysis(
+    output_dir='./results'
 )
+```
+
+## Output Formats
+
+All analysis functions generate high-quality figures in multiple formats:
+- **PNG**: High-resolution raster images (600 DPI)
+- **PDF**: Vector graphics for publications
+- **SVG**: Scalable vector graphics for web use
