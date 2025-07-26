@@ -6,6 +6,7 @@
 *.edf
 *.tar.gz
 *.cif
+*.pyc
 .gitignore
 test.ipynb
 *.tex
