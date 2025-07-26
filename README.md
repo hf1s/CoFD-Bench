@@ -17,21 +17,11 @@ CoFD-Bench is a benchmark platform for evaluating covalent docking methods, cont
 This project implements various analysis and visualization functions:
 
 - **`analyze_rmsd_statistics()`**: Comprehensive RMSD analysis with boxplots for different docking methods
-- **`analyze_rmsd_statistics_()`**: Simplified version of RMSD analysis for basic comparisons
 - **`plot_combined_af3_analysis()`**: Integrates three AF3 analysis plots into one large figure
 - **`plot_SuCOS_pocket_all()`**: Multi-method success rate analysis in 2x2 grid layout
 - **`plot_combined_plif_analysis()`**: Combined bar and violin plots for PLIF recovery
 - **`plot_sucos_group_PLIF()`**: Grouped stacked bar plots comparing docking outcomes by SuCOS groups
 
-## Supported Docking Methods
-
-The analysis framework supports multiple docking methods including:
-- **AF3 (AlphaFold3)**: Both covalent and non-covalent versions
-- **Chai-1**: Standard and MSA-enhanced versions
-- **Boltz-1x**: Boltzmann-enhanced sampling
-- **CovDock-AF3**: Covalent docking with AF3
-- **AutoDock-GPU-AF3**: GPU-accelerated docking with AF3
-- **GNINA-AF3**: GNINA-based docking with AF3
 
 ## Example Jupyter Notebooks
 
@@ -73,10 +63,6 @@ plot.analyze_rmsd_statistics(
     output_dir='./results'
 )
 
-# Combined AF3 analysis
-plot.plot_combined_af3_analysis(
-    output_dir='./results'
-)
 ```
 
 ## Output Formats
