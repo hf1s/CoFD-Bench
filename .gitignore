@@ -8,3 +8,4 @@
 *.cif
 .gitignore
 test.ipynb
+*.tex
