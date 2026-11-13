@@ -9,6 +9,38 @@ CoFD-Bench is a benchmark platform for evaluating covalent docking methods, cont
 ## Data Description
 
 - `pdb_benchmark.csv`: Contains SuCOS-related data and distance information
+- `add_bond_columns.py`: Regenerates the `site_correct` and `bond_correct` columns of `pdb_benchmark.csv` from `Top-1-correct`, `Top-1-distance` and `real_distance`
+
+### Correctness columns
+
+`pdb_benchmark.csv` reports the Top-1 result through three columns. They answer
+different questions and should not be read interchangeably:
+
+| Column | Meaning |
+|---|---|
+| `Top-1-correct` | The original correctness call, kept unchanged for backward compatibility. Identical to `site_correct`. |
+| `site_correct` | The predicted pose places the ligand next to the deposited nucleophile: the closest residue of the matching type in the Top-1 pose is the one the covalent bond is deposited to. This is a **site** prediction and says nothing about bond geometry. |
+| `bond_correct` | `site_correct` **and** the predicted warhead-to-nucleophile distance (`Top-1-distance`) is within the range of a deposited covalent bond in this benchmark. |
+
+The threshold used for `bond_correct` is the longest deposited bond in the set,
+`max(real_distance) = 2.23 Å`; deposited distances here span 1.29-2.23 Å.
+
+Of the 191 entries with `site_correct = True`, 113 are also `bond_correct`. The
+remaining 78 identify the right nucleophile with the warhead outside bonding
+range, which is a useful starting point for constrained refinement but is not a
+modelled covalent bond. The gap is largest off cysteine and serine.
+
+| Nucleophile | Entries | `site_correct` | `bond_correct` |
+|---|---|---|---|
+| CYS | 160 | 134 | 72 |
+| SER | 43 | 43 | 39 |
+| LYS | 9 | 8 | 2 |
+| TYR | 3 | 3 | 0 |
+| ASP | 2 | 2 | 0 |
+| HIS | 1 | 1 | 0 |
+
+One entry (`8PO4`) has no `Top-1-correct` call upstream; `site_correct` and
+`bond_correct` are left blank for it rather than assigned a value.
 - `pdb_benchmark_RMSD.csv`: Contains RMSD data for various docking methods
 - `plifs_recovery_df.csv`: Contains PLIF (Protein-Ligand Interaction Fingerprints) recovery rate data
 
