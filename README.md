@@ -41,6 +41,9 @@ modelled covalent bond. The gap is largest off cysteine and serine.
 
 One entry (`8PO4`) has no `Top-1-correct` call upstream; `site_correct` and
 `bond_correct` are left blank for it rather than assigned a value.
+
+We thank [Michael Varman (@MTVarman)](https://github.com/MTVarman) for proposing and implementing the `site_correct`/`bond_correct` split and its documentation in [#2](https://github.com/hf1s/CoFD-Bench/pull/2).
+
 - `pdb_benchmark_RMSD.csv`: Contains RMSD data for various docking methods
 - `plifs_recovery_df.csv`: Contains PLIF (Protein-Ligand Interaction Fingerprints) recovery rate data
 
